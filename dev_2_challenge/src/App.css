@@ -18,7 +18,7 @@
   width: 256px;
 }
 
-.error {
+.searchbar__error {
   color: rgb(236, 40, 33);
 }
 
@@ -29,13 +29,18 @@
 }
 
 .searchbar form {
-  padding: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
+}
+
+@media (min-width: 400px) {
+  .searchbar form {
+    padding: 24px;
+  }
 }
 
 .searchbar form > * {
@@ -49,6 +54,18 @@
   outline: none;
   flex: 10 1 300px;
 }
+
+.searchbar form select {
+  background: none;
+  border: none;
+  border-bottom: 3px solid;
+  border-radius: 0;
+  -webkit-appearance: none;
+  padding: 8px 16px;
+  flex: 3 1 130px;
+  text-align: center;
+}
+
 
 .searchbar form button {
   flex: 1 1 100px;
@@ -75,7 +92,7 @@
 
 .card {
   border-radius: 4px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   margin: 16px;
   padding: 16px 24px;
   text-align: left;
