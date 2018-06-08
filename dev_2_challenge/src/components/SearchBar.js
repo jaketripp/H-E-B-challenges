@@ -20,7 +20,7 @@ class SearchBar extends Component {
     axios
       .get(`http://localhost:8080/search?term=${this.state.searchTerm}`)
       .then(response => {
-        this.setState({ formError: ""});
+        this.setState({ formError: "", searchTerm: "" });
         this.props.passData(response.data);
       })
       .catch(error => {
@@ -45,6 +45,7 @@ class SearchBar extends Component {
             placeholder="Search for products"
             value={this.state.searchTerm}
             onChange={this.onInputChange}
+            autoFocus
           />
           <button>Submit</button>
         </form>
