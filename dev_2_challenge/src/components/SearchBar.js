@@ -7,6 +7,7 @@ class SearchBar extends Component {
 
     this.state = {
       searchTerm: "",
+      category: "",
       formError: ""
     };
   }
@@ -17,22 +18,44 @@ class SearchBar extends Component {
     if (!this.state.searchTerm) {
       return;
     }
+    // handle if user selects category
+    let category = !this.state.category
+      ? ""
+      : `&category=${this.state.category}`;
+
     axios
-      .get(`http://localhost:8080/search?term=${this.state.searchTerm}`)
+      .get(
+        `http://localhost:8080/search?term=${this.state.searchTerm}${category}`
+      )
       .then(response => {
-        this.setState({ formError: "", searchTerm: "" });
-        this.props.passData(response.data);
+        if (response.data.length === 0) {
+          this.setState({
+            formError: `"${
+              this.state.searchTerm
+            }" returned 0 results. Try something else?`,
+            searchTerm: ""
+          });
+          this.props.passData([]);
+        } else {
+          this.setState({ formError: "", searchTerm: "" });
+          this.props.passData(response.data);
+        }
       })
       .catch(error => {
         console.log(error);
         this.setState({
           formError: "Something went wrong, please try again later."
         });
+        this.props.passData([]);
       });
   };
 
   onInputChange = e => {
     this.setState({ searchTerm: e.target.value });
+  };
+
+  onSelectChange = e => {
+    this.setState({ category: e.target.value });
   };
 
   render() {
@@ -47,6 +70,22 @@ class SearchBar extends Component {
             onChange={this.onInputChange}
             autoFocus
           />
+          <select
+            name="category"
+            onChange={this.onSelectChange}
+            value={this.state.category}
+          >
+            <option value="">All Categories</option>
+            <option value="ID">ID</option>
+            <option value="Description">Description</option>
+            <option value="lastSold">Last Sold</option>
+            <option value="ShelfLife">Shelf Life</option>
+            <option value="Department">Department</option>
+            <option value="Price">Price</option>
+            <option value="Unit">Unit</option>
+            <option value="xFor">xFor</option>
+            <option value="Cost">Cost</option>
+          </select>
           <button>Submit</button>
         </form>
         {this.state.formError && (
