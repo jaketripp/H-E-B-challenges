@@ -6,12 +6,23 @@ import ResultsList from "./components/ResultsList";
 import Footer from "./components/Footer";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: []
+    }
+  }
+
+  passData = (data) => {
+    this.setState({ results: data })
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <SearchBar />
-        <ResultsList />
+        <SearchBar passData={this.passData}/>
+        <ResultsList results={this.state.results}/>
         <Footer />
       </div>
     );

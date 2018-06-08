@@ -7,8 +7,7 @@ class SearchBar extends Component {
 
     this.state = {
       searchTerm: "",
-      formError: "",
-      results: props.results
+      formError: ""
     };
   }
 
@@ -21,8 +20,8 @@ class SearchBar extends Component {
     axios
       .get(`http://localhost:8080/search?term=${this.state.searchTerm}`)
       .then(response => {
-        console.log(response.data);
-        this.setState({ formError: "" });
+        this.setState({ formError: ""});
+        this.props.passData(response.data);
       })
       .catch(error => {
         console.log(error);
@@ -50,7 +49,7 @@ class SearchBar extends Component {
           <button>Submit</button>
         </form>
         {this.state.formError && (
-          <p className="error">{this.state.formError}</p>
+          <p className="searchbar__error">{this.state.formError}</p>
         )}
       </div>
     );
