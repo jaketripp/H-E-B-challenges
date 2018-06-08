@@ -6,8 +6,3 @@
 .error {
   color: rgb(236,40,33);
 }
-
-.loader__image {
-  height: 5rem;
-  width: 5rem;
-}
