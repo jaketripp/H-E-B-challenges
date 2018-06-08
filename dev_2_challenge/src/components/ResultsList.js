@@ -1,23 +1,35 @@
 import React, { Component } from "react";
-import Loading from "./Loading";
+import ResultsListItem from "./ResultsListItem";
 
 class ResultsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...props,
-      loading: false
+      ...props
     };
   }
 
-  componentWillUpdate() {
-    this.setState({ loading: true });
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   // You don't have to do this check first, but it can help prevent an unneeded render
+  //   if (nextProps.results !== this.state.results) {
+  //     this.setState({ results: nextProps.results });
+  //   }
+  // }
 
-  render() {
+  render(props) {
+    console.log(this.state.results);
     return (
-      <div className="results">
-        {this.state.loading && <Loading/>}
+      <div className="results-list">
+        {this.props.results.map((product, i) => {
+          // let selectedPersonName = props.selectedPersonInfo.name;
+          return (
+            <ResultsListItem
+              key={i}
+              {...props}
+              product={product}
+            />
+          );
+        })}
       </div>
     );
   }
