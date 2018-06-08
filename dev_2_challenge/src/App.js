@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import ResultsList from "./components/ResultsList";
@@ -10,19 +10,21 @@ class App extends Component {
     super(props);
     this.state = {
       results: []
-    }
+    };
   }
 
-  passData = (data) => {
-    this.setState({ results: data })
-  }
+  passData = data => {
+    this.setState({ results: data });
+  };
 
   render() {
     return (
       <div className="App">
         <Header />
-        <SearchBar passData={this.passData}/>
-        <ResultsList results={this.state.results}/>
+        <div className="container">
+          <SearchBar passData={this.passData} />
+          <ResultsList results={this.state.results} />
+        </div>
         <Footer />
       </div>
     );
