@@ -3,12 +3,29 @@ import ResultsListItem from "./ResultsListItem";
 
 const ResultsList = props => {
   return (
-    <div className="results-list-container">
-      <div className="results-list">
-        {props.results.map((product, i) => {
-          return <ResultsListItem key={i} {...props} product={product} />;
-        })}
-      </div>
+    <div id="results-list">
+      {props.results[0] && (
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>ID</th>
+              <th>Price</th>
+              <th>Last Sold</th>
+              <th>Shelf Life</th>
+              <th>Department</th>
+              <th>Unit</th>
+              <th>xFor</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.results.map((product, i) => {
+              return <ResultsListItem key={i} {...props} product={product} />;
+            })}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

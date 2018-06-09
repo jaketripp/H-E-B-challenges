@@ -14,22 +14,19 @@ function ResultsListItem(props) {
     Cost
   } = product;
   return (
-    <div className="card">
-      <div className="card__header">
-        <p className="product-name">{toTitleCase(Description)}</p>
-        <p>
-          {Price} - {xFor} {Unit}
-        </p>
-      </div>
-      <hr/>
-      <div className="card__details">
-        <p>ID: #{ID}</p>
-        <p>Department: {Department}</p>
-        <p>Last Sold: {lastSold}</p>
-        <p>Shelf Life: {ShelfLife}</p>
-        <p>Cost: {Cost}</p>
-      </div>
-    </div>
+    <tr>
+      <td data-label="Description" className="product-name">
+        {toTitleCase(Description)}
+      </td>
+      <td data-label="ID">#{ID}</td>
+      <td data-label="Price">{Price}</td>
+      <td data-label="Last Sold">{lastSold}</td>
+      <td data-label="Shelf Life">{ShelfLife}</td>
+      <td data-label="Department">{Department}</td>
+      <td data-label="Unit">{Unit}</td>
+      <td data-label="xFor">{xFor}</td>
+      <td data-label="Cost">{Cost}</td>
+    </tr>
   );
 }
 
