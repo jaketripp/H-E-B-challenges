@@ -17,5 +17,5 @@ ID,Description,lastSold,ShelfLife,Department, Price ,Unit,xFor, Cost
 9000001,headache medicine,9/20/2017,365d,Pharmacy, $4.89 ,Each,1, $1.90
 9000002,Migraine Medicine,9/21/2017,365d,Pharmacy, $5.89 ,Each,1, $1.90
 9000003,Cold and Flu,9/22/2017,365d,Pharmacy, $3.29 ,Each,1, $1.90
-9000004,Allegry Medicine,9/23/2017,365d,Pharmacy, $3.00 ,Each,1, $1.25
+9000004,Allergy Medicine,9/23/2017,365d,Pharmacy, $3.00 ,Each,1, $1.25
 9000005,Pain,9/24/2017,365d,Pharmacy, $2.89 ,Each,1, $1.00
