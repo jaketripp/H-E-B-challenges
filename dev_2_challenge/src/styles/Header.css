@@ -1,0 +1,14 @@
+#header {
+  padding: 24px 0;
+  background: #0080bf;
+}
+
+#header h1 {
+  font-size: 2em;
+  color: white;
+  padding: 0 8px;
+}
+
+#header img {
+  width: 256px;
+}
