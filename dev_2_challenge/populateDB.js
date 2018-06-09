@@ -29,16 +29,3 @@ fs.readFile("product.csv", "utf-8", function(err, data) {
       });
   });
 });
-
-// console.log(arrayOfObjects);
-// axios({
-//   method: "post",
-//   url: "http://localhost:8080/add",
-//   data: arrayOfObjects
-// })
-//   .then(response => {
-//     // console.log(response);
-//   })
-//   .catch(e => {
-//     console.log(e);
-//   });
