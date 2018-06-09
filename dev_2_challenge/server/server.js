@@ -7,28 +7,36 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+function sortByProductName(data) {
+  return data.sort((a, b) => {
+    return a["Description"].localeCompare(b["Description"]);
+  });
+}
+
 app.get("/search", function(req, res) {
   let { term, category } = req.query;
   // search all fields for terms
   if (!category) {
     Product.find({ $text: { $search: term } })
       .then(data => {
-        res.send(data);
+        let sortedData = sortByProductName(data);
+        res.send(sortedData);
       })
       .catch(e => {
         console.log(e);
         res.send("Error");
       });
-  // specific category passed - more accurate
+    // specific category passed - more accurate
   } else {
     // use RegExp to make case insensitive
     // use ^ character to optimize searching
     let searchObj = {};
-    searchObj[category] = new RegExp(`^${term}`, 'i');
+    searchObj[category] = new RegExp(`^${term}`, "i");
 
     Product.find(searchObj)
       .then(data => {
-        res.send(data);
+        let sortedData = sortByProductName(data);
+        res.send(sortedData);
       })
       .catch(e => {
         console.log(e);
