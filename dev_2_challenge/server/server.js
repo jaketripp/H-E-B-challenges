@@ -15,8 +15,10 @@ function sortByProductName(data) {
 
 app.get("/search", function(req, res) {
   let { term, category } = req.query;
+
   // search all fields for terms
   if (!category) {
+    
     Product.find({ $text: { $search: term } })
       .then(data => {
         let sortedData = sortByProductName(data);
@@ -26,8 +28,10 @@ app.get("/search", function(req, res) {
         console.log(e);
         res.send("Error");
       });
-    // specific category passed - more accurate
+      
+  // specific category passed - more accurate
   } else {
+    
     // use RegExp to make case insensitive
     // use ^ character to optimize searching
     let searchObj = {};
@@ -42,6 +46,7 @@ app.get("/search", function(req, res) {
         console.log(e);
         res.send("Error");
       });
+
   }
 });
 
