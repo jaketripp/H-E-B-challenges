@@ -26,6 +26,8 @@ Now start the API server:
 node server/server.js
 ```
 
+Open a new terminal and navigate back to ```dev_2_challenge```
+
 Build everything:
 ```
 npm run build
