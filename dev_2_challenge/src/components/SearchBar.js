@@ -69,11 +69,13 @@ class SearchBar extends Component {
             value={this.state.searchTerm}
             onChange={this.onInputChange}
             autoFocus
+            aria-label="Term"
           />
           <select
             name="category"
             onChange={this.onSelectChange}
             value={this.state.category}
+            aria-label="Category"
           >
             <option value="">All Categories</option>
             <option value="ID">ID</option>
